@@ -36,6 +36,26 @@ public class ZooManagement {
         // Instruction 3: display the changes
         System.out.println(zooName + " has " + nbrCages + " cages");
 
+        // Instruction 5: create objects and assign attributes line by line
+        Animal lion = new Animal();
+        lion.family = "Felidae";
+        lion.name = "Simba";
+        lion.age = 5;
+        lion.isMammal = true;
+
+        Zoo myZoo = new Zoo();
+        myZoo.name = zooName;
+        myZoo.city = "Tunis";
+        myZoo.nbrCages = nbrCages;
+        myZoo.animals[0] = lion;
+
+        // Instruction 6: same thing with the parameterized constructors
+        Animal lion2 = new Animal("Felidae", "Simba", 5, true);
+        Zoo myZoo2 = new Zoo(zooName, "Tunis", 25);
+        myZoo2.animals[0] = lion2;
+
+        System.out.println(lion2.name + " lives in " + myZoo2.name + ", " + myZoo2.city);
+
         sc.close();
     }
 }
