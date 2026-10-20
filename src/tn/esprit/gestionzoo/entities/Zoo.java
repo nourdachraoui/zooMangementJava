@@ -6,6 +6,9 @@ public class Zoo {
     private String city;
     private static final int NBR_CAGES = 25;
     private int nbrAnimals;
+    // Instruction 25
+    private Aquatic[] aquaticAnimals = new Aquatic[10];
+    private int nbrAquaticAnimals;
 
     public Zoo() {
         animals = new Animal[NBR_CAGES];
@@ -69,5 +72,61 @@ public class Zoo {
             return z1;
         }
         return z2;
+    }
+    // Instruction 26
+    public void addAquaticAnimal(Aquatic aquatic) {
+        if (aquatic == null) {
+            System.out.println("Cannot add a null aquatic animal.");
+            return;
+        }
+
+        if (nbrAquaticAnimals >= aquaticAnimals.length) {
+            System.out.println("The aquatic animal array is full.");
+            return;
+        }
+
+        aquaticAnimals[nbrAquaticAnimals] = aquatic;
+        nbrAquaticAnimals++;
+    }
+
+    // Instruction 27
+    public void displayAquaticAnimalsSwimming() {
+        for (int i = 0; i < nbrAquaticAnimals; i++) {
+            aquaticAnimals[i].swim();
+        }
+    }
+
+    // Instruction 29
+    public float maxPenguinSwimmingDepth() {
+        float maxDepth = 0.0f;
+
+        for (int i = 0; i < nbrAquaticAnimals; i++) {
+            if (aquaticAnimals[i] instanceof Penguin) {
+                Penguin penguin = (Penguin) aquaticAnimals[i];
+
+                if (penguin.getSwimmingDepth() > maxDepth) {
+                    maxDepth = penguin.getSwimmingDepth();
+                }
+            }
+        }
+
+        return maxDepth;
+    }
+
+    // Instruction 30
+    public void displayNumberOfAquaticsByType() {
+        int dolphins = 0;
+        int penguins = 0;
+
+        for (int i = 0; i < nbrAquaticAnimals; i++) {
+            if (aquaticAnimals[i] instanceof Dolphin) {
+                dolphins++;
+            } else if (aquaticAnimals[i] instanceof Penguin) {
+                penguins++;
+            }
+        }
+
+        System.out.println("Number of dolphins: " + dolphins);
+        System.out.println("Number of penguins: " + penguins);
     }
 }

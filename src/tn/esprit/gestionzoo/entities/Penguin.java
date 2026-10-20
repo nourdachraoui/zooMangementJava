@@ -9,9 +9,18 @@ public class Penguin extends Aquatic {
         this.swimmingDepth = swimmingDepth;
     }
 
+    public float getSwimmingDepth() {
+        return swimmingDepth;
+    }
+
     @Override
     public String toString() {
         return "Penguin{" + super.toString() +
                 ", swimmingDepth=" + swimmingDepth + '}';
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("This penguin is swimming");
     }
 }
