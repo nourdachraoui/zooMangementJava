@@ -2,6 +2,10 @@ package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.Animal;
 import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.Aquatic;
+import tn.esprit.gestionzoo.entities.Terrestrial;
+import tn.esprit.gestionzoo.entities.Dolphin;
+import tn.esprit.gestionzoo.entities.Penguin;
 
 import java.util.Scanner;
 
@@ -61,6 +65,35 @@ public class ZooManagement {
         lion.setAge(-3);
         myZoo.setName("");
         System.out.println(lion.getName() + " is " + lion.getAge() + " years old");
+        // Instruction 22: parameterized constructors
+        Aquatic aquatic = new Aquatic(
+                "Fish", "Nemo", 2, false, "Ocean"
+        );
+
+        Terrestrial terrestrial = new Terrestrial(
+                "Felidae", "Leo", 5, true, 4
+        );
+
+        Dolphin dolphin = new Dolphin(
+                "Delphinidae", "Flipper", 8, true, "Ocean", 40.0f
+        );
+
+        Penguin penguin = new Penguin(
+                "Spheniscidae", "Pingu", 3, false, "Antarctica", 100.0f
+        );
+
+        // Instruction 23: display the objects
+        System.out.println("\n--- Animal descriptions ---");
+        System.out.println(aquatic);
+        System.out.println(terrestrial);
+        System.out.println(dolphin);
+        System.out.println(penguin);
+
+        // Instruction 24: call swim()
+        System.out.println("\n--- Swimming ---");
+        aquatic.swim();
+        dolphin.swim();
+        penguin.swim();
 
         sc.close();
     }

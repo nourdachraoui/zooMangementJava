@@ -45,6 +45,7 @@ public class Animal {
         }
     }
 
+
     public boolean isMammal() {
         return isMammal;
     }
@@ -52,4 +53,13 @@ public class Animal {
     public void setMammal(boolean mammal) {
         isMammal = mammal;
     }
+
+    @Override
+    public String toString() {
+        return "family='" + family + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isMammal=" + isMammal;
+    }
+
 }
