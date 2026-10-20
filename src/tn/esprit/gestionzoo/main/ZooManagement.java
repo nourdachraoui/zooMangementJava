@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -22,7 +27,7 @@ public class ZooManagement {
         nbrCages = 0;
         while (nbrCages <= 0) {
             System.out.print("Enter the number of cages: ");
-            if (sc.hasNextInt()) {af
+            if (sc.hasNextInt()) {
                 nbrCages = sc.nextInt();
                 if (nbrCages <= 0) {
                     System.out.println("The number of cages must be greater than 0.");
@@ -36,7 +41,6 @@ public class ZooManagement {
         // Instruction 3: display the changes
         System.out.println(zooName + " has " + nbrCages + " cages");
 
-        // Prosit 2 + 3: objects with constructors
         Animal lion = new Animal("Felidae", "Simba", 5, true);
         Animal tiger = new Animal("Felidae", "Shere Khan", 7, true);
         Animal parrot = new Animal("Psittacidae", "Coco", 2, false);
@@ -48,12 +52,15 @@ public class ZooManagement {
         Zoo otherZoo = new Zoo("Safari Park", "Sousse");
         otherZoo.addAnimal(parrot);
 
-        // Instruction 15
-        System.out.println(myZoo.name + " full? " + myZoo.isZooFull());
+        System.out.println(myZoo.getName() + " full? " + myZoo.isZooFull());
 
-        // Instruction 16
         Zoo bigger = Zoo.compareZoo(myZoo, otherZoo);
-        System.out.println("The zoo with the most animals is " + bigger.name);
+        System.out.println("The zoo with the most animals is " + bigger.getName());
+
+        // Instruction 18: tests of the validation
+        lion.setAge(-3);
+        myZoo.setName("");
+        System.out.println(lion.getName() + " is " + lion.getAge() + " years old");
 
         sc.close();
     }
