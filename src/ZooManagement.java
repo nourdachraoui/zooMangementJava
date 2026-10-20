@@ -22,7 +22,7 @@ public class ZooManagement {
         nbrCages = 0;
         while (nbrCages <= 0) {
             System.out.print("Enter the number of cages: ");
-            if (sc.hasNextInt()) {
+            if (sc.hasNextInt()) {af
                 nbrCages = sc.nextInt();
                 if (nbrCages <= 0) {
                     System.out.println("The number of cages must be greater than 0.");
@@ -36,25 +36,24 @@ public class ZooManagement {
         // Instruction 3: display the changes
         System.out.println(zooName + " has " + nbrCages + " cages");
 
-        // Instruction 5: create objects and assign attributes line by line
-        Animal lion = new Animal();
-        lion.family = "Felidae";
-        lion.name = "Simba";
-        lion.age = 5;
-        lion.isMammal = true;
+        // Prosit 2 + 3: objects with constructors
+        Animal lion = new Animal("Felidae", "Simba", 5, true);
+        Animal tiger = new Animal("Felidae", "Shere Khan", 7, true);
+        Animal parrot = new Animal("Psittacidae", "Coco", 2, false);
 
-        Zoo myZoo = new Zoo();
-        myZoo.name = zooName;
-        myZoo.city = "Tunis";
-        myZoo.nbrCages = nbrCages;
-        myZoo.animals[0] = lion;
+        Zoo myZoo = new Zoo(zooName, "Tunis");
+        myZoo.addAnimal(lion);
+        myZoo.addAnimal(tiger);
 
-        // Instruction 6: same thing with the parameterized constructors
-        Animal lion2 = new Animal("Felidae", "Simba", 5, true);
-        Zoo myZoo2 = new Zoo(zooName, "Tunis", 25);
-        myZoo2.animals[0] = lion2;
+        Zoo otherZoo = new Zoo("Safari Park", "Sousse");
+        otherZoo.addAnimal(parrot);
 
-        System.out.println(lion2.name + " lives in " + myZoo2.name + ", " + myZoo2.city);
+        // Instruction 15
+        System.out.println(myZoo.name + " full? " + myZoo.isZooFull());
+
+        // Instruction 16
+        Zoo bigger = Zoo.compareZoo(myZoo, otherZoo);
+        System.out.println("The zoo with the most animals is " + bigger.name);
 
         sc.close();
     }
