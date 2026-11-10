@@ -1,12 +1,15 @@
 package tn.esprit.gestionzoo.entities;
 
+import tn.esprit.gestionzoo.exceptions.ZooFullException;
+
 public class Zoo {
+
     private Animal[] animals;
     private String name;
     private String city;
-    private static final int NBR_CAGES = 25;
+    private static final int NBR_CAGES = 3;
     private int nbrAnimals;
-    // Instruction 25
+
     private Aquatic[] aquaticAnimals = new Aquatic[10];
     private int nbrAquaticAnimals;
 
@@ -28,7 +31,6 @@ public class Zoo {
         return name;
     }
 
-    // Instruction 18: the zoo name must not be empty
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             System.out.println("Zoo name cannot be empty.");
@@ -53,14 +55,18 @@ public class Zoo {
         return nbrAnimals;
     }
 
-    // Instruction 17: addAnimal uses isZooFull()
-    public boolean addAnimal(Animal animal) {
-        if (animal == null || isZooFull()) {
-            return false;
+    // Prosit 7: throw an exception when the zoo is full.
+    public void addAnimal(Animal animal) throws ZooFullException {
+        if (animal == null) {
+            return;
         }
+
+        if (nbrAnimals >= NBR_CAGES) {
+            throw new ZooFullException("The zoo is full.");
+        }
+
         animals[nbrAnimals] = animal;
         nbrAnimals++;
-        return true;
     }
 
     public boolean isZooFull() {
@@ -71,9 +77,10 @@ public class Zoo {
         if (z1.nbrAnimals >= z2.nbrAnimals) {
             return z1;
         }
+
         return z2;
     }
-    // Instruction 26
+
     public void addAquaticAnimal(Aquatic aquatic) {
         if (aquatic == null) {
             System.out.println("Cannot add a null aquatic animal.");
@@ -89,14 +96,12 @@ public class Zoo {
         nbrAquaticAnimals++;
     }
 
-    // Instruction 27
     public void displayAquaticAnimalsSwimming() {
         for (int i = 0; i < nbrAquaticAnimals; i++) {
             aquaticAnimals[i].swim();
         }
     }
 
-    // Instruction 29
     public float maxPenguinSwimmingDepth() {
         float maxDepth = 0.0f;
 
@@ -113,7 +118,6 @@ public class Zoo {
         return maxDepth;
     }
 
-    // Instruction 30
     public void displayNumberOfAquaticsByType() {
         int dolphins = 0;
         int penguins = 0;

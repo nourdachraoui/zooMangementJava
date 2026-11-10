@@ -1,12 +1,16 @@
 package tn.esprit.gestionzoo.entities;
 
+import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
+
 import java.util.Objects;
 
 public abstract class Aquatic extends Animal {
+
     private String habitat;
 
     public Aquatic(String family, String name, int age,
-                   boolean isMammal, String habitat) {
+                   boolean isMammal, String habitat)
+            throws InvalidAgeException {
         super(family, name, age, isMammal);
         this.habitat = habitat;
     }
@@ -20,10 +24,8 @@ public abstract class Aquatic extends Animal {
         return super.toString() + ", habitat='" + habitat + '\'';
     }
 
-    // Instruction 28: concrete subclasses must implement swim()
     public abstract void swim();
 
-    // Instruction 31
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
